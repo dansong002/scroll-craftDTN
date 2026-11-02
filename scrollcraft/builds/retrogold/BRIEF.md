@@ -31,9 +31,17 @@
 7. **One world or scenes:** "Not sure yet". The recommendation is pending.
 8. **Assets:** photos and logo.
 
+## Asset audit (38 files pulled from the live site)
+
+- **Studio shoot (the brand, already made):** gold tinsel curtain backdrop, chrome disco balls, all-black tees, sunglasses, gold chains. Solo portraits for every player, plus two group shots holding a disco ball (one on a white ground, one with a tinsel backdrop). These are high resolution (3.5k to 4.5k px tall) and consistently graded warm.
+- **Live: crowd (peak material):** a wedding tent with every hand up under purple light, and a black-and-white shot of the singer in the crowd with arms raised all around.
+- **Live: band at work:** drummer under a tent, keys rig, guitarist in an AC/DC tee, a mixing desk (FOH, which proves the "own production crew" claim), and a wide outdoor stage shot.
+- **Logo:** white hand-lettered "RETRO GOLD" with gold underline and sparkle marks, raster PNG on black. A vector version would be better.
+- **Art direction this implies:** the chrome disco ball supplies the retro-futurism; the tinsel supplies the gold. Premium-minimal means near-black canvas, warm off-white ink, and one gold accent sampled from the tinsel. The band's existing visual identity is the brand kit, so it outranks the skill's palette defaults.
+
 ## Open items
 
-- The band's own photos (images.zoogletools.com is blocked from this environment).
+- ~~The band's own photos~~ (done, see the audit above).
 - The actual setlist (song, artist, decade) for the jukebox.
 - Rights for jukebox audio: use the band's own live recordings, never the original studio tracks.
 - The single CTA label, and what booking needs to collect (date, event type, venue, guest count).
