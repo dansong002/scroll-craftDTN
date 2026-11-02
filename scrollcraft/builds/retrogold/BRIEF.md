@@ -82,7 +82,7 @@
 | Act | Device | Span | Why |
 |---|---|---|---|
 | Curtain | pin + three CSS-driven planes off `--sc-p` | 2.2 | A reveal is the oldest stage move there is. Depth comes from three rates: curtain fast, sign mid, band slow |
-| Band | pan | 3.4 | A lineup is breadth, so it travels sideways |
+| Band | pan | 3.8 | A lineup is breadth, so it travels sideways |
 | Jukebox | pin + bespoke canvas | 3.0 | The signature move needs the frame to hold while the dial turns |
 | Built for your night | flow + reveal | auto | The contrast that makes the pinned acts land |
 | Peak | pin + iris reveal + kinetic | 4.2 | The single iris on the page, saved for the peak |
@@ -92,7 +92,12 @@
 
 - **Setlist:** `setlist.js` holds visible placeholders ("Song title", "Artist"). The real songs are needed before launch.
 - **Booking email:** `RG_BOOKING_EMAIL` in `setlist.js` is empty. The form says it is not connected and points to Instagram until it is set.
-- **Sixth musician:** the band is 6 musicians + 2 engineers, but the old site lists only 5 musicians. Name, role and photo needed for the band rail.
-- **Who's who:** confirm the photo assignments for Ely V., Holden K. and Jacob E. (taken from the order on the current site).
+- **Lineup (confirmed by the band from the group shot):**
+  - On stage: Jacob H. (lead vocals), Isaac R. (keys and vocoder), Ely V. (guitar), Sean G. (guitar), Christian (bass), Daniel A. (drums).
+  - Engineers: Holden K. (in-ear mix), Jacob E.
+- **Band rail:** now uses each person's tinsel-shoot portrait, matched by face to the lettered group shot.
+- **Christian:** has no photo yet, so he has a typographic card. Needed: a portrait (ideally from the tinsel shoot, or any 4:5 photo) and his last initial.
+- **Jacob E.:** role set to "Front of house engineer"; confirm. His card uses the mixing-desk photo.
+- **Hero group shot:** includes the former bassist and not Christian or Jacob E. Replace it with a current group photo when there is one.
 - **Photos:** the group shot is only 1350px wide; a higher-resolution original would sharpen the hero. A vector logo would too.
 - **Jukebox audio:** later, the band's own live clips only, never original studio tracks.

@@ -138,6 +138,15 @@
     width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
     border-radius: var(--rg-r); box-shadow: var(--sc-e3);
   }
+  .member__plate {
+    position: relative; aspect-ratio: 4 / 5; border-radius: var(--rg-r); overflow: hidden; box-shadow: var(--sc-e3);
+    background: url(assets/curtain-l.webp) center / cover; display: grid; place-items: end start; padding: var(--sc-5);
+  }
+  .member__plate::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(12 10 8 / 0.92), rgb(12 10 8 / 0.55)); }
+  .member__plate span {
+    position: relative; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 820;
+    font-size: clamp(2.6rem, 1.6rem + 3vw, 4.4rem); line-height: 0.9; text-transform: uppercase; color: var(--sc-accent);
+  }
   .member h3 {
     margin: var(--sc-4) 0 0; font-family: var(--sc-font-display); font-stretch: 112%;
     font-weight: 720; font-size: var(--sc-t-lg); text-transform: uppercase; letter-spacing: 0;
@@ -326,7 +335,7 @@
   </section>
 
   <!-- 2 · WARMTH: the band, one at a time -->
-  <section class="band" data-sc-act="pan" data-sc-span="3.4" data-sc-drift="#0e0b08" aria-labelledby="band-h">
+  <section class="band" data-sc-act="pan" data-sc-span="3.8" data-sc-drift="#0e0b08" aria-labelledby="band-h">
     <div data-sc-stage class="band__stage">
       <div class="rail" data-sc-pan="0.04">
         <div class="rail__lead">
@@ -334,32 +343,36 @@
           <p class="sc-body">Six on stage, two on the desk, and all eight in sunglasses.</p>
         </div>
         <figure class="member">
-          <img src="assets/band-jacob-h.webp" width="900" height="1125" loading="lazy" alt="Jacob singing into a handheld mic under a white tent.">
+          <img src="assets/member-jacob-h.webp" width="900" height="1125" loading="lazy" alt="Jacob in round sunglasses, pointing both hands at the camera against gold tinsel.">
           <h3>Jacob H.</h3><p>Lead vocals</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-izzy-r.webp" width="900" height="1125" loading="lazy" alt="Izzy laughing between songs at the keys on an outdoor stage.">
-          <h3>Izzy R.</h3><p>Keys, synth, Moog and autotune vocals</p>
+          <img src="assets/member-isaac-r.webp" width="900" height="1125" loading="lazy" alt="Isaac in white-framed sunglasses, one hand up, grinning against gold tinsel.">
+          <h3>Isaac R.</h3><p>Keys and vocoder</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-daniel-a.webp" width="900" height="1125" loading="lazy" alt="Daniel mid-fill on the drums, sticks raised.">
-          <h3>Daniel A.</h3><p>Drums and autotune vocals</p>
+          <img src="assets/member-ely-v.webp" width="900" height="1125" loading="lazy" alt="Ely in sunglasses and a gold medallion against gold tinsel, holding a mirror ball.">
+          <h3>Ely V.</h3><p>Guitar</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-sean-g.webp" width="900" height="1125" loading="lazy" alt="Sean playing a white electric guitar on stage.">
-          <h3>Sean G.</h3><p>Electric guitar and backing vocals</p>
+          <img src="assets/member-sean-g.webp" width="900" height="1125" loading="lazy" alt="Sean in a backwards cap and sunglasses against gold tinsel.">
+          <h3>Sean G.</h3><p>Guitar</p>
+        </figure>
+        <figure class="member member--tbc">
+          <div class="member__plate" aria-hidden="true"><span>Bass</span></div>
+          <h3>Christian</h3><p>Bass</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-ely-v.webp" width="900" height="1125" loading="lazy" alt="Ely in sunglasses and a gold medallion against gold tinsel, holding a mirror ball.">
-          <h3>Ely V.</h3><p>Electric guitar</p>
+          <img src="assets/member-daniel-a.webp" width="900" height="1125" loading="lazy" alt="Daniel smiling beside a mirror ball against gold tinsel.">
+          <h3>Daniel A.</h3><p>Drums</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-holden-k.webp" width="900" height="1125" loading="lazy" alt="Holden adjusting orange-tinted glasses against gold tinsel.">
-          <h3>Holden K.</h3><p>Front of house and in-ear engineer</p>
+          <img src="assets/member-holden-k.webp" width="900" height="1125" loading="lazy" alt="Holden adjusting orange-tinted glasses against gold tinsel.">
+          <h3>Holden K.</h3><p>In-ear mix engineer</p>
         </figure>
         <figure class="member">
-          <img src="assets/band-jacob-e.webp" width="900" height="1125" loading="lazy" alt="Hands on the faders of a digital mixing desk.">
-          <h3>Jacob E.</h3><p>Front of house and in-ear engineer</p>
+          <img src="assets/member-jacob-e.webp" width="900" height="1125" loading="lazy" alt="Hands on the faders of a digital mixing desk.">
+          <h3>Jacob E.</h3><p>Front of house engineer</p>
         </figure>
         <div class="rail__note">
           <p class="sc-lede">Now spin the set.</p>
