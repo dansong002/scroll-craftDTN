@@ -66,7 +66,7 @@
 
 | Act | Feeling | What causes it |
 |---|---|---|
-| 1 Curtain | Anticipation | A dark tinsel curtain with the sign hanging in front, which parts to show the seven of them lit |
+| 1 Curtain | Anticipation | A dark tinsel curtain with the sign hanging in front, which parts to show the band lit |
 | 2 Band | Warmth | Faces, names and jobs, one at a time, including the two engineers |
 | 3 Jukebox | Delight, recognition | Spinning the ball yourself and watching the decade (and the songs) change |
 | 4 Built for your night | Calm trust | The only document-like act: tailored setlist, own production, real venues. This is the hush before the peak |
@@ -92,6 +92,7 @@
 
 - **Setlist:** `setlist.js` holds visible placeholders ("Song title", "Artist"). The real songs are needed before launch.
 - **Booking email:** `RG_BOOKING_EMAIL` in `setlist.js` is empty. The form says it is not connected and points to Instagram until it is set.
+- **Sixth musician:** the band is 6 musicians + 2 engineers, but the old site lists only 5 musicians. Name, role and photo needed for the band rail.
 - **Who's who:** confirm the photo assignments for Ely V., Holden K. and Jacob E. (taken from the order on the current site).
 - **Photos:** the group shot is only 1350px wide; a higher-resolution original would sharpen the hero. A vector logo would too.
 - **Jukebox audio:** later, the band's own live clips only, never original studio tracks.
