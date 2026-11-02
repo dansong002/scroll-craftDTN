@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retro Gold · The hottest cover band in Iowa</title>
+<meta name="description" content="Retro Gold is a pop rock cover band from Des Moines playing hits from the 90s to now at weddings, corporate events, festivals and private parties.">
+<meta property="og:title" content="Retro Gold">
+<meta property="og:description" content="The hottest cover band in Iowa. Hits from the 90s to now, with our own sound and production crew.">
+<meta property="og:image" content="assets/band-group.webp">
+<meta name="theme-color" content="#0c0a08">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c0a08'/><circle cx='16' cy='16' r='9' fill='%23e3b45c'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="assets/curtain-l.webp">
+<link rel="preload" as="image" href="assets/curtain-r.webp">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root {
+    --sc-canvas:     #0c0a08;
+    --sc-surface:    #17130e;
+    --sc-ink:        #f3ece1;
+    --sc-ink-soft:   #bcae97;
+    --sc-accent:     #e3b45c;
+    --sc-accent-ink: #15100a;
+    --sc-font-display: "Archivo", system-ui, sans-serif;
+    --sc-font-text:    "Geist", system-ui, sans-serif;
+    --sc-shadow-color: 30 40% 3%;
+    --rg-r: 4px;
+  }
+
+  .sc-display {
+    font-stretch: 118%;
+    font-weight: 780;
+    text-transform: uppercase;
+    letter-spacing: -0.012em;
+    line-height: 0.98;
+  }
+  .sc-display--md { letter-spacing: -0.006em; }
+
+  /* ---------------------------------------------------------------- bar -- */
+  .bar {
+    position: fixed; inset: 0 0 auto 0; z-index: var(--sc-z-chrome);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--sc-3) var(--sc-gutter);
+    background: linear-gradient(to bottom, color-mix(in oklab, var(--sc-canvas) 82%, transparent), transparent);
+  }
+  .bar__mark { display: block; }
+  .bar__mark img { height: 46px; width: auto; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 var(--sc-5);
+    border-radius: var(--rg-r);
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 700;
+    font-size: var(--sc-t-sm); letter-spacing: 0.04em; text-transform: uppercase;
+    text-decoration: none; white-space: nowrap; border: 0; cursor: pointer;
+    box-shadow: var(--sc-e2), inset 0 1px 0 color-mix(in oklab, white 35%, transparent);
+    transition: transform 140ms var(--sc-ease-out), background-color 160ms var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .btn:hover { background: #ecc574; } }
+  .btn:active { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn--quiet {
+    background: color-mix(in oklab, var(--sc-canvas) 60%, transparent);
+    color: var(--sc-ink); box-shadow: inset 0 0 0 1px var(--sc-hairline-strong);
+  }
+  @media (hover: hover) and (pointer: fine) { .btn--quiet:hover { background: color-mix(in oklab, var(--sc-accent) 18%, var(--sc-canvas)); } }
+
+  /* ------------------------------------------------------------- 1 hero --
+     Three planes and a light: the band at the back, the sign in the middle,
+     the tinsel curtain in front. --open is the curtain's travel, done by 62%. */
+  .hero__stage { --open: max(0, min(1, calc((var(--sc-p, 0) - 0.04) / 0.58))); background: var(--sc-canvas); }
+  .hero__band {
+    position: absolute; left: 50%; top: 50%;
+    width: min(86vw, 118vh); height: auto; max-width: none;
+    translate: -50% -58%;
+    transform: scale(calc(0.86 + var(--open) * 0.14));
+    filter: brightness(calc(0.25 + var(--open) * 0.55)) sepia(0.22) contrast(1.06);
+    -webkit-mask-image: radial-gradient(58% 60% at 50% 46%, #000 38%, transparent 96%);
+            mask-image: radial-gradient(58% 60% at 50% 46%, #000 38%, transparent 96%);
+    z-index: 0;
+  }
+  .hero__curtain {
+    position: absolute; top: -3%; bottom: -3%; width: 51%;
+    background-size: cover; background-repeat: no-repeat;
+    filter: brightness(0.52) contrast(1.12) saturate(1.1);
+    z-index: 1;
+  }
+  .hero__curtain::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(var(--fold, 90deg), transparent 70%, color-mix(in oklab, var(--sc-canvas) 70%, transparent));
+  }
+  .hero__curtain--l { left: 0; background-image: url(assets/curtain-l.webp); background-position: right center;
+    transform-origin: 0% 50%;
+    transform: translateX(calc(var(--open) * -100%)) scale(calc(1 + var(--open) * 0.06)); }
+  .hero__curtain--r { right: 0; background-image: url(assets/curtain-r.webp); background-position: left center; --fold: 270deg;
+    transform-origin: 100% 50%;
+    transform: translateX(calc(var(--open) * 100%)) scale(calc(1 + var(--open) * 0.06)); }
+  .hero__sign {
+    position: absolute; left: 50%; top: 34%; z-index: 2;
+    width: min(30vw, 40vh); height: auto; max-width: none;
+    translate: -50% -50%;
+    transform: translateY(calc(var(--open) * -6vh)) scale(calc(1 - var(--open) * 0.3));
+    opacity: calc(1 - var(--open) * 1.25);
+    filter: drop-shadow(0 6px 14px rgb(8 6 4 / 0.55));
+  }
+  .hero__scrim { z-index: 3; --sc-scrim-a: 96%; }
+  .hero__scrim.sc-scrim--band {
+    background: linear-gradient(to top,
+      color-mix(in oklab, var(--sc-canvas) 97%, transparent) 0%,
+      color-mix(in oklab, var(--sc-canvas) 88%, transparent) 26%,
+      color-mix(in oklab, var(--sc-canvas) 40%, transparent) 46%,
+      transparent 62%);
+  }
+  .hero__copy, .hero__beat {
+    inset-inline: auto; left: 50%; translate: -50% 0; bottom: clamp(2.5rem, 8vh, 6rem);
+    width: min(64rem, calc(100vw - 2 * var(--sc-gutter))); max-width: none; text-align: center;
+  }
+  .hero__copy .sc-display { font-size: var(--sc-t-3xl); max-width: 22ch; margin-inline: auto; }
+  .hero__copy .sc-lede { margin: var(--sc-4) auto 0; max-width: 40ch; color: var(--sc-ink); }
+  .hero__copy .btn { margin-top: var(--sc-5); }
+  .hero__beat .sc-display { max-width: 24ch; margin-inline: auto; font-size: var(--sc-t-2xl); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__stage { --open: 0.38; }
+  }
+
+  /* ------------------------------------------------------------- 2 band -- */
+  .band__stage { display: flex; align-items: center; }
+  .rail { gap: clamp(1rem, 2.2vw, 2.25rem); padding-inline: var(--sc-gutter); align-items: flex-end; }
+  .rail__lead { flex: 0 0 min(25rem, 78vw); align-self: center; }
+  .rail__lead .sc-body { margin-top: var(--sc-4); }
+  .member { flex: 0 0 clamp(14rem, 21vw, 19.5rem); margin: 0; }
+  .member:nth-of-type(even) { margin-bottom: 9vh; }
+  .member img {
+    width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+    border-radius: var(--rg-r); box-shadow: var(--sc-e3);
+  }
+  .member h3 {
+    margin: var(--sc-4) 0 0; font-family: var(--sc-font-display); font-stretch: 112%;
+    font-weight: 720; font-size: var(--sc-t-lg); text-transform: uppercase; letter-spacing: 0;
+  }
+  .member p { margin: var(--sc-1) 0 0; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
+  .rail__note { flex: 0 0 min(20rem, 72vw); align-self: center; }
+  .rail__note .sc-lede { color: var(--sc-ink-soft); }
+  @media (prefers-reduced-motion: no-preference) {
+    .member { opacity: calc(0.55 + min(0.45, var(--sc-p, 0) * 3)); }
+  }
+
+  /* -------------------------------------------------- 3 jukebox (signature) --
+     The mirror ball is drawn, not photographed: scroll spins it, the pointer
+     moves the key light, and the light it throws sweeps the room. Each quarter
+     turn lands on a decade and the setlist on the wall changes with it. */
+  .jb { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: var(--sc-7);
+        padding: 0 var(--sc-gutter); }
+  .jb__flecks { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .jb__ball { position: relative; z-index: 1; justify-self: center; width: min(40vw, 70vh); aspect-ratio: 1; }
+  .jb__ball::before {
+    content: ""; position: absolute; left: 50%; bottom: 100%; width: 2px; height: 60vh;
+    translate: -50% 0; background: linear-gradient(to top, #6b5f4f, transparent);
+  }
+  .jb__ballc { width: 100%; height: 100%; }
+  .jb__panel { position: relative; z-index: 2; max-width: 34rem; }
+  .jb__panel .sc-body { margin-top: var(--sc-3); }
+  .jb__decades { display: flex; gap: var(--sc-2); margin-top: var(--sc-6); flex-wrap: wrap; }
+  .jb__tab {
+    min-width: 4.5rem; min-height: 44px; padding: 0 var(--sc-4);
+    border-radius: var(--rg-r); border: 0; cursor: pointer;
+    background: transparent; color: var(--sc-ink-soft);
+    box-shadow: inset 0 0 0 1px var(--sc-hairline-strong);
+    font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 700; font-size: var(--sc-t-base);
+    transition: background-color 160ms var(--sc-ease-out), color 160ms var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .jb__tab:hover { color: var(--sc-ink); } }
+  .jb__tab:active { transform: translateY(1px); }
+  .jb__tab[aria-selected="true"] { background: var(--sc-accent); color: var(--sc-accent-ink); box-shadow: none; }
+  .jb__era {
+    margin: var(--sc-6) 0 0; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 820;
+    font-size: clamp(3.4rem, 2rem + 6vw, 7rem); line-height: 0.9; color: var(--sc-accent);
+    font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  }
+  .jb__songs { list-style: none; margin: var(--sc-5) 0 0; padding: 0; counter-reset: song; }
+  .jb__songs li {
+    display: grid; grid-template-columns: 1fr auto; gap: var(--sc-4); align-items: baseline;
+    padding: var(--sc-3) 0; border-top: 1px solid var(--sc-hairline);
+  }
+  .jb__song { font-weight: 500; }
+  .jb__artist { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); text-align: right; }
+  @media (prefers-reduced-motion: no-preference) {
+    .jb__songs li { opacity: 0; transform: translateY(8px); }
+    .jb__songs.is-in li { opacity: 1; transform: none; transition: opacity 360ms var(--sc-ease-out), transform 360ms var(--sc-ease-out); }
+    .jb__songs.is-in li:nth-child(2) { transition-delay: 40ms; }
+    .jb__songs.is-in li:nth-child(3) { transition-delay: 80ms; }
+    .jb__songs.is-in li:nth-child(4) { transition-delay: 120ms; }
+    .jb__songs.is-in li:nth-child(5) { transition-delay: 160ms; }
+    .jb__songs.is-in li:nth-child(n+6) { transition-delay: 200ms; }
+  }
+
+  /* ------------------------------------------------------------ 4 pitch -- */
+  .pitch { padding-block: var(--sc-section); }
+  .pitch__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--sc-9); align-items: center; }
+  .pitch__for { display: flex; flex-wrap: wrap; gap: var(--sc-2) var(--sc-5); padding: 0; margin-top: var(--sc-6) !important; list-style: none;
+                font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 650; text-transform: uppercase; font-size: var(--sc-t-sm); letter-spacing: 0.03em; }
+  .pitch__for li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: var(--sc-2); border-radius: 50%; background: var(--sc-accent); vertical-align: 0.15em; }
+  .pitch__recent { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
+  .pitch__recent strong { color: var(--sc-ink); font-weight: 500; }
+  .pitch__fig { margin: 0; }
+  .pitch__fig img { width: 100%; height: auto; border-radius: var(--rg-r); box-shadow: var(--sc-e3); }
+  .pitch__fig figcaption { margin-top: var(--sc-3); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
+
+  /* ------------------------------------------------------------- 5 peak -- */
+  .peak__stage { background: #060505; }
+  .peak__hush { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: var(--sc-gutter); z-index: 1; }
+  .peak__img { position: absolute; inset: 0; margin: 0; z-index: 2; }
+  .peak__img img { width: 100%; height: 100%; object-fit: cover; }
+  .peak__scrim { z-index: 3; }
+  .peak__late .sc-scrim { z-index: 3; }
+  @media (max-width: 860px) {
+    .peak__scrim.sc-scrim--lead {
+      background: linear-gradient(to top,
+        color-mix(in oklab, var(--sc-canvas) 95%, transparent) 0%,
+        color-mix(in oklab, var(--sc-canvas) 82%, transparent) 26%,
+        color-mix(in oklab, var(--sc-canvas) 30%, transparent) 46%,
+        transparent 60%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .peak__img:not(.peak__img--bw) { opacity: clamp(0, calc((var(--sc-p, 0) - 0.18) / 0.16), 1); }
+  }
+  .peak__late { position: absolute; inset: 0; z-index: 4; opacity: clamp(0, calc((var(--sc-p, 0) - 0.64) / 0.1), 1); }
+  @media (min-width: 861px) {
+    .peak__scrim--late.sc-scrim--trail {
+      background: linear-gradient(to left,
+        color-mix(in oklab, var(--sc-canvas) 94%, transparent) 0%,
+        color-mix(in oklab, var(--sc-canvas) 86%, transparent) 42%,
+        color-mix(in oklab, var(--sc-canvas) 40%, transparent) 62%,
+        transparent 76%);
+    }
+  }
+  .peak .sc-copy { z-index: var(--sc-z-copy); }
+  .peak .sc-display--xl { max-width: 12ch; }
+
+  /* ------------------------------------------------------------- 6 book -- */
+  .book { padding-block: var(--sc-section) var(--sc-7); background: var(--sc-surface); }
+  .book__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--sc-9); align-items: start; }
+  .book__form { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sc-4) var(--sc-5); }
+  .field { display: grid; gap: var(--sc-2); }
+  .field--wide { grid-column: 1 / -1; }
+  .field label { font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
+  .field :is(input, select, textarea) {
+    width: 100%; min-height: 48px; padding: var(--sc-3) var(--sc-4);
+    border-radius: var(--rg-r); border: 1px solid var(--sc-hairline-strong);
+    background: var(--sc-canvas); color: var(--sc-ink);
+    transition: border-color 160ms var(--sc-ease-out);
+  }
+  .field textarea { min-height: 7.5rem; resize: vertical; }
+  .field :is(input, select, textarea):hover { border-color: color-mix(in oklab, var(--sc-ink) 40%, transparent); }
+  .field :is(input, select, textarea):focus-visible { border-color: var(--sc-accent); }
+  .field input::-webkit-calendar-picker-indicator { filter: invert(0.8); }
+  .book__actions { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--sc-5); flex-wrap: wrap; margin-top: var(--sc-2); }
+  .book__status { margin: 0; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 40ch; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: var(--sc-5); flex-wrap: wrap;
+          margin-top: var(--sc-10); padding-top: var(--sc-6); border-top: 1px solid var(--sc-hairline); }
+  .foot img { height: 40px; width: auto; }
+  .foot ul { display: flex; flex-wrap: wrap; gap: var(--sc-2) var(--sc-5); list-style: none; margin: 0; padding: 0; font-size: var(--sc-t-sm); }
+  .foot a { color: var(--sc-ink-soft); }
+  .foot a:hover { color: var(--sc-ink); }
+  .foot small { color: var(--sc-ink-soft); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  /* ----------------------------------------------------------- phones -- */
+  @media (max-width: 860px) {
+    .bar__mark img { height: 38px; }
+    .bar .btn { min-height: 40px; padding: 0 var(--sc-4); }
+    .hero__band { width: 118vw; translate: -50% -58%; }
+    .hero__sign { width: min(62vw, 34vh); top: 34%; }
+    .jb { grid-template-columns: 1fr; gap: var(--sc-4); align-content: center; padding-top: 4.5rem; }
+    .jb__ball { width: min(52vw, 30vh); }
+    .jb__panel .sc-body { display: none; }
+    .jb__decades { margin-top: var(--sc-4); }
+    .jb__era { display: none; }
+    .jb__songs { margin-top: var(--sc-3); }
+    .jb__songs li { padding: var(--sc-2) 0; font-size: var(--sc-t-sm); }
+    .pitch__grid, .book__grid { grid-template-columns: 1fr; gap: var(--sc-7); }
+    .book__form { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .sc-display--xl { font-size: var(--sc-t-2xl); }
+    .sc-display--lg { font-size: clamp(1.9rem, 1.4rem + 2.6vw, 2.8rem); }
+  }
+</style>
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="bar__mark" href="#top" aria-label="Retro Gold, back to top"><img src="assets/logo.webp" width="1200" height="1237" alt=""></a>
+  <a class="btn" href="#book">Check your date</a>
+</header>
+
+<main id="top">
+
+  <!-- 1 · ANTICIPATION: the curtain parts on the band -->
+  <section class="hero" data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#0c0a08">
+    <div data-sc-stage class="hero__stage">
+      <img class="hero__band" src="assets/band-group.webp" width="1350" height="1080"
+           alt="The seven members of Retro Gold in black tees and sunglasses, seated around a mirror ball.">
+      <div class="hero__curtain hero__curtain--l" aria-hidden="true"></div>
+      <div class="hero__curtain hero__curtain--r" aria-hidden="true"></div>
+      <img class="hero__sign" src="assets/logo.webp" width="1200" height="1237" alt="" aria-hidden="true">
+      <div class="sc-scrim sc-scrim--band hero__scrim" aria-hidden="true"></div>
+      <div class="sc-copy hero__copy" data-sc-cue="0 0.36 0">
+        <h1 class="sc-display" data-sc-kinetic="lines">The hottest cover band in Iowa.</h1>
+        <p class="sc-lede">Hits from the 90s to now, played live for weddings, corporate nights, festivals and private parties.</p>
+        <a class="btn" href="#book">Check your date</a>
+      </div>
+      <div class="sc-copy hero__beat" data-sc-cue="0.58 1">
+        <p class="sc-display">Five musicians. Two engineers. One packed floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · WARMTH: the band, one at a time -->
+  <section class="band" data-sc-act="pan" data-sc-span="3.4" data-sc-drift="#0e0b08" aria-labelledby="band-h">
+    <div data-sc-stage class="band__stage">
+      <div class="rail" data-sc-pan="0.04">
+        <div class="rail__lead">
+          <h2 id="band-h" class="sc-display sc-display--lg">Meet the band.</h2>
+          <p class="sc-body">Five on stage, two on the desk, and all seven in sunglasses.</p>
+        </div>
+        <figure class="member">
+          <img src="assets/band-jacob-h.webp" width="900" height="1125" loading="lazy" alt="Jacob singing into a handheld mic under a white tent.">
+          <h3>Jacob H.</h3><p>Lead vocals</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-izzy-r.webp" width="900" height="1125" loading="lazy" alt="Izzy laughing between songs at the keys on an outdoor stage.">
+          <h3>Izzy R.</h3><p>Keys, synth, Moog and autotune vocals</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-daniel-a.webp" width="900" height="1125" loading="lazy" alt="Daniel mid-fill on the drums, sticks raised.">
+          <h3>Daniel A.</h3><p>Drums and autotune vocals</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-sean-g.webp" width="900" height="1125" loading="lazy" alt="Sean playing a white electric guitar on stage.">
+          <h3>Sean G.</h3><p>Electric guitar and backing vocals</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-ely-v.webp" width="900" height="1125" loading="lazy" alt="Ely in sunglasses and a gold medallion against gold tinsel, holding a mirror ball.">
+          <h3>Ely V.</h3><p>Electric guitar</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-holden-k.webp" width="900" height="1125" loading="lazy" alt="Holden adjusting orange-tinted glasses against gold tinsel.">
+          <h3>Holden K.</h3><p>Front of house and in-ear engineer</p>
+        </figure>
+        <figure class="member">
+          <img src="assets/band-jacob-e.webp" width="900" height="1125" loading="lazy" alt="Hands on the faders of a digital mixing desk.">
+          <h3>Jacob E.</h3><p>Front of house and in-ear engineer</p>
+        </figure>
+        <div class="rail__note">
+          <p class="sc-lede">Now spin the set.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · DELIGHT: the mirror-ball jukebox (signature move) -->
+  <section id="setlist" class="jbx" data-sc-act="pin" data-sc-span="3" data-sc-drift="#0a0907" aria-labelledby="set-h">
+    <div data-sc-stage class="jb">
+      <canvas class="jb__flecks" aria-hidden="true"></canvas>
+      <div class="jb__ball"><canvas class="jb__ballc" aria-hidden="true"></canvas></div>
+      <div class="jb__panel">
+        <h2 id="set-h" class="sc-display sc-display--md">Spin the set.</h2>
+        <p class="sc-body">Scroll to turn the ball, or pick a decade. Every song on the wall is one we play live.</p>
+        <div class="jb__decades" role="tablist" aria-label="Decade">
+          <button class="jb__tab" role="tab" id="tab-90s" aria-controls="songs" aria-selected="true">90s</button>
+          <button class="jb__tab" role="tab" id="tab-00s" aria-controls="songs" aria-selected="false" tabindex="-1">00s</button>
+          <button class="jb__tab" role="tab" id="tab-10s" aria-controls="songs" aria-selected="false" tabindex="-1">10s</button>
+          <button class="jb__tab" role="tab" id="tab-20s" aria-controls="songs" aria-selected="false" tabindex="-1">20s</button>
+        </div>
+        <p class="jb__era" aria-hidden="true">90s</p>
+        <ol id="songs" class="jb__songs is-in" role="tabpanel" aria-labelledby="tab-90s" aria-live="polite"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · TRUST, and the hush before the peak -->
+  <section class="pitch" data-sc-act="flow" data-sc-drift="#15110c" aria-labelledby="pitch-h">
+    <div class="sc-wrap pitch__grid">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <h2 id="pitch-h" class="sc-display sc-display--lg">Built for your night.</h2>
+        <p class="sc-lede">We read the room and tailor the setlist to your crowd, so the dance floor stays full until the last song.</p>
+        <p class="sc-body">We bring our own sound system and our own two-person production crew on front of house and in-ear monitors. A tent in a field sounds like a concert.</p>
+        <ul class="pitch__for">
+          <li>Weddings</li><li>Corporate events</li><li>Festivals</li><li>Private parties</li>
+        </ul>
+        <p class="pitch__recent">Recently played: <strong>Rendezvous on Riverview</strong>, Des Moines. <strong>Music on Main Street</strong>, Dubuque. <strong>Winterset Cidery</strong>, Winterset. Plus Fortune 500 corporate events across the Midwest.</p>
+      </div>
+      <figure class="pitch__fig" data-sc-reveal="up" data-sc-reveal-at="0.12 0.5">
+        <img src="assets/desk.webp" width="1400" height="1050" loading="lazy" alt="Retro Gold's digital mixing desk and laptop rig set up on road cases on the grass.">
+        <figcaption>Our front-of-house rig, set up on the lawn.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5 · PEAK: the lights drop, and the floor goes up -->
+  <section class="peak" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#060505" aria-labelledby="peak-h">
+    <div data-sc-stage class="peak__stage">
+      <p class="peak__hush sc-display sc-display--md" data-sc-cue="0 0.2 0">Then the lights drop.</p>
+      <figure class="peak__img" data-sc-reveal="iris" data-sc-reveal-at="0.16 0.46">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/crowd-m.webp">
+          <img src="assets/crowd.webp" width="2400" height="1605" alt="A wedding crowd under a tent with every hand in the air, lit purple.">
+        </picture>
+      </figure>
+      <div class="sc-scrim sc-scrim--lead peak__scrim" aria-hidden="true"></div>
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0.38 0.68">
+        <h2 id="peak-h" class="sc-display sc-display--xl" data-sc-kinetic="lines">Every hand in the air.</h2>
+      </div>
+      <div class="peak__late">
+        <figure class="peak__img peak__img--bw">
+          <picture>
+            <source media="(max-width: 700px)" srcset="assets/crowd-bw-m.webp">
+            <img src="assets/crowd-bw.webp" width="2400" height="1600" loading="lazy" alt="Black and white: the singer in the middle of a packed dance floor, guests singing along.">
+          </picture>
+        </figure>
+        <div class="sc-scrim sc-scrim--trail peak__scrim--late" aria-hidden="true"></div>
+      </div>
+      <div class="sc-copy sc-copy--trail" data-sc-cue="0.72 1 0.1 0">
+        <p class="sc-display sc-display--lg">This is the part your guests remember.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · RESOLVE: check your date -->
+  <section id="book" class="book" data-sc-act="flow" data-sc-drift="#17130e" aria-labelledby="book-h">
+    <div class="sc-wrap book__grid">
+      <div class="sc-stack" data-sc-in data-sc-stagger="60">
+        <h2 id="book-h" class="sc-display sc-display--lg">Check your date.</h2>
+        <p class="sc-lede">Weddings, corporate events, festivals and private parties across the Midwest. Tell us about the night and we will get back to you.</p>
+      </div>
+      <form class="book__form" novalidate data-sc-in>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-date">Event date</label><input id="f-date" name="date" type="date" required></div>
+        <div class="field"><label for="f-type">Type of event</label>
+          <select id="f-type" name="type" required>
+            <option value="">Choose one</option>
+            <option>Wedding</option><option>Corporate event</option><option>Festival</option><option>Private party</option><option>Something else</option>
+          </select>
+        </div>
+        <div class="field field--wide"><label for="f-where">City or venue</label><input id="f-where" name="where" autocomplete="address-level2" required></div>
+        <div class="field field--wide"><label for="f-msg">Anything else? Guest count, timings, songs you love</label><textarea id="f-msg" name="message"></textarea></div>
+        <div class="book__actions">
+          <button class="btn" type="submit">Check your date</button>
+          <p class="book__status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+    <footer class="sc-wrap foot">
+      <img src="assets/logo.webp" width="1200" height="1237" alt="Retro Gold">
+      <ul>
+        <li><a href="https://instagram.com/theretrogoldband" rel="noopener" target="_blank">Instagram</a></li>
+        <li><a href="http://facebook.com/theretrogoldband" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://www.youtube.com/channel/UCBOpiluGVynSDvJtndUY9GA" rel="noopener" target="_blank">YouTube</a></li>
+        <li><a href="https://linktr.ee/theretrogoldband" rel="noopener" target="_blank">Linktree</a></li>
+      </ul>
+      <small>© Retro Gold. Des Moines, Iowa.</small>
+    </footer>
+  </section>
+
+</main>
+
+<script src="setlist.js"></script>
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* Mirror-ball jukebox. Reads the pinned act's --sc-p, which the engine publishes. */
+(function () {
+  var sec = document.getElementById('setlist');
+  if (!sec) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var data = window.RG_SETLIST || {};
+  var keys = ['90s', '00s', '10s', '20s'];
+  var tabs = [].slice.call(sec.querySelectorAll('[role="tab"]'));
+  var list = sec.querySelector('.jb__songs');
+  var era = sec.querySelector('.jb__era');
+  var stage = sec.querySelector('.jb');
+  var ballC = sec.querySelector('.jb__ballc');
+  var flC = sec.querySelector('.jb__flecks');
+  var bx = ballC.getContext('2d'), fx = flC.getContext('2d');
+  var cur = -1;
+
+  function setDecade(i) {
+    if (i === cur) return;
+    cur = i;
+    tabs.forEach(function (t, j) {
+      t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+      t.tabIndex = j === i ? 0 : -1;
+    });
+    era.textContent = keys[i];
+    list.setAttribute('aria-labelledby', tabs[i].id);
+    list.classList.remove('is-in');
+    list.textContent = '';
+    (data[keys[i]] || []).forEach(function (s) {
+      var li = document.createElement('li');
+      var a = document.createElement('span'); a.className = 'jb__song'; a.textContent = s[0];
+      var b = document.createElement('span'); b.className = 'jb__artist'; b.textContent = s[1];
+      li.appendChild(a); li.appendChild(b); list.appendChild(li);
+    });
+    void list.offsetWidth;
+    list.classList.add('is-in');
+  }
+
+  function progress() { return parseFloat(sec.style.getPropertyValue('--sc-p')) || 0; }
+  function decadeAt(p) { return Math.max(0, Math.min(3, Math.floor(p * 4 * 0.999))); }
+
+  function goTo(i) {
+    var travel = sec.offsetHeight - innerHeight;
+    var top = sec.getBoundingClientRect().top + scrollY + travel * (i + 0.5) / 4;
+    setDecade(i);
+    scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { goTo(i); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = (i + d + 4) % 4; tabs[n].focus(); goTo(n);
+    });
+  });
+
+  // Ball geometry: latitude bands of mirror tiles, fewer per band toward the poles.
+  var tiles = [], ROWS = 26, seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (var r = 0; r < ROWS; r++) {
+    var la0 = -Math.PI / 2 + r * Math.PI / ROWS, la1 = la0 + Math.PI / ROWS, lac = (la0 + la1) / 2;
+    var cols = Math.max(6, Math.round(54 * Math.cos(lac)));
+    for (var c = 0; c < cols; c++) {
+      tiles.push({ la0: la0, la1: la1, lo0: c * 2 * Math.PI / cols, lo1: (c + 1) * 2 * Math.PI / cols, env: rnd() });
+    }
+  }
+  // The room the ball reflects: a handful of fixed lights. A tile flashes when
+  // its reflected ray passes one of them, which is what makes it read as mirror.
+  var room = [];
+  for (var m = 0; m < 22; m++) {
+    var a0 = (rnd() - 0.5) * 3.0, e0 = (rnd() - 0.35) * 1.5;
+    room.push({ d: [Math.sin(a0) * Math.cos(e0), Math.sin(e0), Math.cos(a0) * Math.cos(e0)], gold: m % 3 === 0, k: 0.6 + rnd() * 0.6 });
+  }
+  var flecks = [];
+  for (var k = 0; k < 64; k++) flecks.push({ la: (rnd() - 0.5) * 1.9, lo: rnd() * Math.PI * 2, s: 0.6 + rnd() * 1.4, g: rnd() < 0.3 });
+
+  var dpr = Math.min(2, devicePixelRatio || 1), BS = 0, FW = 0, FH = 0;
+  function size() {
+    var b = ballC.getBoundingClientRect(), f = stage.getBoundingClientRect();
+    BS = b.width; FW = f.width; FH = f.height;
+    ballC.width = Math.round(BS * dpr); ballC.height = Math.round(BS * dpr);
+    flC.width = Math.round(FW * dpr); flC.height = Math.round(FH * dpr);
+    dirty = true;
+  }
+
+  var theta = 0, target = 0, idle = 0, mx = 0.32, my = 0.26, tmx = mx, tmy = my, dirty = true;
+  function norm(v) { var l = Math.hypot(v[0], v[1], v[2]); return [v[0] / l, v[1] / l, v[2] / l]; }
+
+  function drawBall() {
+    var S = BS * dpr, R = S / 2 * 0.96, cx = S / 2, cy = S / 2;
+    bx.clearRect(0, 0, S, S);
+    var g = bx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R);
+    g.addColorStop(0, '#3a332a'); g.addColorStop(1, '#0d0b09');
+    bx.fillStyle = g; bx.beginPath(); bx.arc(cx, cy, R, 0, Math.PI * 2); bx.fill();
+    var L1 = norm([(mx - 0.5) * 2.2, (0.5 - my) * 2.2, 1.1]);
+    bx.lineWidth = Math.max(1, dpr * 0.8);
+    bx.strokeStyle = 'rgba(10,8,6,0.92)';
+    for (var i = 0; i < tiles.length; i++) {
+      var t = tiles[i], lom = (t.lo0 + t.lo1) / 2 + theta, lam = (t.la0 + t.la1) / 2;
+      var nz = Math.cos(lam) * Math.cos(lom);
+      if (nz < 0.03) continue;
+      var n = [Math.cos(lam) * Math.sin(lom), Math.sin(lam), nz];
+      var rv = [2 * n[2] * n[0], 2 * n[2] * n[1], 2 * n[2] * n[2] - 1];
+      var w = 0, gw = 0;
+      for (var j = 0; j < room.length; j++) {
+        var L = room[j].d, d = rv[0] * L[0] + rv[1] * L[1] + rv[2] * L[2];
+        if (d > 0.86) { var s = Math.pow(d, 70) * room[j].k; if (room[j].gold) gw += s; else w += s; }
+      }
+      var key = Math.pow(Math.max(0, rv[0] * L1[0] + rv[1] * L1[1] + rv[2] * L1[2]), 40);
+      w += key * 1.3;
+      // Each tile is set at a slightly different angle, so the room it sees varies.
+      var amb = (0.16 + 0.42 * t.env * t.env) * (0.5 + 0.5 * Math.max(0, n[1] * 0.5 + nz * 0.7));
+      var rr = 20 + 225 * amb + 250 * w + 235 * gw;
+      var gg = 18 + 215 * amb + 242 * w + 180 * gw;
+      var bb = 16 + 200 * amb + 226 * w + 96 * gw;
+      if (rr > 255) { gg = gg - (rr - 255) * 0.15; }
+      bb = Math.min(bb, gg * 0.94);
+      bx.fillStyle = 'rgb(' + Math.min(255, rr | 0) + ',' + Math.min(255, gg | 0) + ',' + Math.min(255, bb | 0) + ')';
+      bx.beginPath();
+      var lo0 = t.lo0 + theta, lo1 = t.lo1 + theta;
+      var pts = [[t.la0, lo0], [t.la0, lo1], [t.la1, lo1], [t.la1, lo0]];
+      for (var q = 0; q < 4; q++) {
+        var la = pts[q][0], lo = pts[q][1];
+        var px = cx + R * Math.cos(la) * Math.sin(lo), py = cy - R * Math.sin(la);
+        if (q) bx.lineTo(px, py); else bx.moveTo(px, py);
+      }
+      bx.closePath(); bx.fill(); bx.stroke();
+    }
+    var rim = bx.createRadialGradient(cx, cy, R * 0.75, cx, cy, R);
+    rim.addColorStop(0, 'rgba(12,10,8,0)'); rim.addColorStop(1, 'rgba(12,10,8,0.55)');
+    bx.fillStyle = rim; bx.beginPath(); bx.arc(cx, cy, R, 0, Math.PI * 2); bx.fill();
+  }
+
+  function drawFlecks() {
+    var W = FW * dpr, H = FH * dpr;
+    fx.clearRect(0, 0, W, H);
+    for (var i = 0; i < flecks.length; i++) {
+      var f = flecks[i], a = f.lo + theta * 2.2, w = Math.cos(a);
+      if (w < 0.05) continue;
+      var x = W * 0.5 + Math.sin(a) * W * 0.62, y = H * 0.5 - Math.sin(f.la) * H * 0.58;
+      var rad = (2.4 + f.s * 2.4) * dpr, c = f.g ? '232,184,96,' : '255,240,214,';
+      var gr = fx.createRadialGradient(x, y, 0, x, y, rad * 3);
+      gr.addColorStop(0, 'rgba(' + c + (w * 0.75).toFixed(3) + ')');
+      gr.addColorStop(0.3, 'rgba(' + c + (w * 0.4).toFixed(3) + ')');
+      gr.addColorStop(1, 'rgba(' + c + '0)');
+      fx.fillStyle = gr;
+      fx.beginPath(); fx.ellipse(x, y, rad * 3, rad * 2.3, 0, 0, Math.PI * 2); fx.fill();
+    }
+  }
+
+  var visible = false, raf = 0;
+  function frame() {
+    raf = 0;
+    if (!visible) return;
+    var p = progress();
+    setDecade(decadeAt(p));
+    if (reduce) {
+      target = cur * Math.PI / 2;
+      if (theta !== target) { theta = target; dirty = true; }
+    } else {
+      idle += 0.0016;
+      target = p * Math.PI * 3 + idle;
+      theta += (target - theta) * 0.14;
+      mx += (tmx - mx) * 0.1; my += (tmy - my) * 0.1;
+      dirty = true;
+    }
+    if (dirty) { drawBall(); drawFlecks(); dirty = false; }
+    if (!reduce) raf = requestAnimationFrame(frame);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+
+  new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting;
+    if (visible) kick();
+  }).observe(sec);
+  if (reduce) addEventListener('scroll', kick, { passive: true });
+  if (fine && !reduce) {
+    stage.addEventListener('pointermove', function (e) {
+      var b = ballC.getBoundingClientRect();
+      tmx = Math.max(0, Math.min(1, (e.clientX - b.left) / b.width));
+      tmy = Math.max(0, Math.min(1, (e.clientY - b.top) / b.height));
+    });
+  }
+  new ResizeObserver(function () { size(); kick(); }).observe(stage);
+  size();
+  setDecade(0);
+})();
+
+/* Booking form: composes an email to the band's booking address. */
+(function () {
+  var form = document.querySelector('.book__form');
+  if (!form) return;
+  var status = form.querySelector('.book__status');
+  var date = form.querySelector('#f-date');
+  date.min = new Date().toISOString().slice(0, 10);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var to = window.RG_BOOKING_EMAIL;
+    if (!to) {
+      status.textContent = 'Online booking is not connected yet. Message us on Instagram at @theretrogoldband and we will check your date.';
+      return;
+    }
+    var f = new FormData(form);
+    var body = ['Name: ' + f.get('name'), 'Email: ' + f.get('email'), 'Date: ' + f.get('date'),
+                'Event: ' + f.get('type'), 'Where: ' + f.get('where'), '', String(f.get('message') || '')].join('\n');
+    location.href = 'mailto:' + to + '?subject=' +
+      encodeURIComponent('Booking request: ' + f.get('date') + ', ' + f.get('type')) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Your email app should open with the details filled in. Send it and we will get back to you.';
+  });
+})();
+</script>
+</body>
+</html>

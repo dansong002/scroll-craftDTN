@@ -39,9 +39,59 @@
 - **Logo:** white hand-lettered "RETRO GOLD" with gold underline and sparkle marks, raster PNG on black. A vector version would be better.
 - **Art direction this implies:** the chrome disco ball supplies the retro-futurism; the tinsel supplies the gold. Premium-minimal means near-black canvas, warm off-white ink, and one gold accent sampled from the tinsel. The band's existing visual identity is the brand kit, so it outranks the skill's palette defaults.
 
+## Round two answers (verbatim selections)
+
+- **Journey:** "Yes, build it". Curtain and logo, then the band one by one, the decade jukebox, a full-screen crowd moment, and booking.
+- **Jukebox:** "Setlist only, no audio".
+- **CTA:** "Check your date".
+- **Form:** "Date, event type, location".
+
+## Decisions
+
+- **Grammar:** filmic one-shot.
+  - *Why not rhythmic cutlist* (the obvious music grammar): it bans pin and parallax. The approved journey needs a layered curtain hero and a held peak, and the user chose premium-minimal over loud.
+  - *Live surface* and *gallery*: the jukebox is one tool and the lineup is one rail, but neither is the whole page.
+  - *Typographic poster*: wastes a strong photo shoot.
+  - *Chaptered editorial*: wrong energy.
+  - *Split stage*: no two-sided argument.
+  - *Continuous world*: no geography, and no video assets.
+- **Signature move:** a mirror ball drawn on canvas.
+  - Scroll spins it through four decades and the setlist on the wall changes each quarter turn.
+  - The pointer moves its key light.
+  - Light flecks it throws sweep across the room.
+  - The decade buttons and arrow keys drive the same dial.
+- **Tell-someone sentence:** "It's the site where you spin a disco ball through their setlist."
+
+## Feeling curve
+
+| Act | Feeling | What causes it |
+|---|---|---|
+| 1 Curtain | Anticipation | A dark tinsel curtain with the sign hanging in front, which parts to show the seven of them lit |
+| 2 Band | Warmth | Faces, names and jobs, one at a time, including the two engineers |
+| 3 Jukebox | Delight, recognition | Spinning the ball yourself and watching the decade (and the songs) change |
+| 4 Built for your night | Calm trust | The only document-like act: tailored setlist, own production, real venues. This is the hush before the peak |
+| 5 Peak | Release | Black frame, "Then the lights drop.", iris onto the crowd with every hand up, then the black-and-white singer in the crowd |
+| 6 Book | Resolve | The form, held. The last screen is the action, not a fade |
+
+**The peak:** "You scroll and suddenly you're on their dance floor with every hand in the air." It is Act 5, the largest span (4.2vh), and the act before it is the quietest.
+
+**Authored silence:** the opening of Act 5 (a black stage with one line) is deliberate.
+
+## Score
+
+| Act | Device | Span | Why |
+|---|---|---|---|
+| Curtain | pin + three CSS-driven planes off `--sc-p` | 2.2 | A reveal is the oldest stage move there is. Depth comes from three rates: curtain fast, sign mid, band slow |
+| Band | pan | 3.4 | A lineup is breadth, so it travels sideways |
+| Jukebox | pin + bespoke canvas | 3.0 | The signature move needs the frame to hold while the dial turns |
+| Built for your night | flow + reveal | auto | The contrast that makes the pinned acts land |
+| Peak | pin + iris reveal + kinetic | 4.2 | The single iris on the page, saved for the peak |
+| Book | flow | auto | The close resolves into an input, not a button island |
+
 ## Open items
 
-- ~~The band's own photos~~ (done, see the audit above).
-- The actual setlist (song, artist, decade) for the jukebox.
-- Rights for jukebox audio: use the band's own live recordings, never the original studio tracks.
-- The single CTA label, and what booking needs to collect (date, event type, venue, guest count).
+- **Setlist:** `setlist.js` holds visible placeholders ("Song title", "Artist"). The real songs are needed before launch.
+- **Booking email:** `RG_BOOKING_EMAIL` in `setlist.js` is empty. The form says it is not connected and points to Instagram until it is set.
+- **Who's who:** confirm the photo assignments for Ely V., Holden K. and Jacob E. (taken from the order on the current site).
+- **Photos:** the group shot is only 1350px wide; a higher-resolution original would sharpen the hero. A vector logo would too.
+- **Jukebox audio:** later, the band's own live clips only, never original studio tracks.

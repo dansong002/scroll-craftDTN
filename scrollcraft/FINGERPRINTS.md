@@ -28,9 +28,7 @@ changes only grammar and world will fail it.
 
 | Build | Grammar | Nav treatment | Hero device | Act-sequence shape | Close pattern | Signature move | World | Port |
 |---|---|---|---|---|---|---|---|---|
-
-*(empty: your first build has nothing to clear, so build whatever the interview
-points at. From the second onwards, this table is the constraint.)*
+| retrogold | Filmic one-shot | Fixed minimal bar: hand-lettered logo + one gold CTA | Pinned three-plane photographic stage: tinsel curtain halves part (front), logo sign recedes (mid), band rises into light (back); no video | pin(layers) > pan > pin(signature) > flow > pin(iris peak) > flow form; 6 acts, ~15vh | Flow section on a raised surface ground: booking form with the CTA as submit, footer below; no spotlight, no magnet | Canvas mirror ball the scroll spins through four decades; the pointer moves the key light, flecks sweep the room, setlist swaps per quarter turn | Gold tinsel, chrome mirror ball, warm off-black | 4500 |
 
 ---
 
@@ -41,7 +39,10 @@ reusing: a grammar, a nav treatment, a close pattern, a signature move, an
 act-count-and-length band. The shared columns are what the next build inherits
 as a constraint, so writing them down is the whole point.
 
-Nothing is taken yet.
+- **Curtain-reveal hero** (retrogold): front planes splitting horizontally to uncover the subject. The next build opens a different way.
+- **Mirror-ball / rotating-object dial** as a content selector (retrogold).
+- **Iris reveal out of a black "hush" frame** as the peak (retrogold).
+- **6 acts at ~15vh** with a form close (retrogold).
 
 ---
 
