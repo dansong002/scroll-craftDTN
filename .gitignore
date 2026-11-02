@@ -7,6 +7,9 @@
 # ten video legs is 300MB+, and a working lab directory reached 12GB locally.
 # Committing them once puts them in history permanently.
 builds/
+!scrollcraft/builds/
+scrollcraft/builds/*
+!scrollcraft/builds/retrogold/
 lab/
 out/
 dist/
